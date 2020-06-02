@@ -86,7 +86,7 @@ jobs:
              ls -l
              pwd
       - name: Download package
-        run: mvn install -X -ssettings.xml -DGHP_PUBLISH_TOKEN=${{ secrets.GHP_DOWNLOAD_TOKEN }}
+        run: mvn install -X -ssettings.xml -DGHP_DOWNLOAD_TOKEN=${{ secrets.GHP_DOWNLOAD_TOKEN }}
       - name: Check downloads
         run:  |
              ls -l /home/runner/.m2/repository/com/aa/hello
