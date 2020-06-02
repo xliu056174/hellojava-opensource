@@ -10,11 +10,10 @@
 		<relativePath/>
 	</parent> -->
 
-	<groupId>com.aa</groupId>
+	<!-- <groupId>com.aa</groupId>
 	<artifactId>hello</artifactId>
 	<version>0.0.3</version>
-	<!--version>0.0.1-SNAPSHOT</version-->
-	<description>hello</description>
+	<description>hello</description> -->
 
 	<properties>
 		<java.version>11</java.version>
