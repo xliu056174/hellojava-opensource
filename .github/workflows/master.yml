@@ -24,6 +24,18 @@ jobs:
        - name: Build with Maven
          run: mvn -B package --file pom.xml
 
+       - name: Setup sonarqube
+         uses: warchant/setup-sonar-scanner@v1
+       - name: Run sonarqube
+         run: sonar-scanner
+             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+             -Dsonar.organization=056174
+             -Dsonar.host.url=https://sonarcloud.io/
+             -Dsonar.projectKey=my-hello-world
+             -Dsonar.sources=.
+             -X
+
+
   #     - run: mkdir staging && cp target/*.jar staging
   #     - name: Upload artifact
   #       uses: actions/upload-artifact@v1
@@ -50,24 +62,6 @@ jobs:
   #     - name: Display structure of downloaded files
   #       run: ls -RS
   #       working-directory: target
-
-  sonarcloud:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-      with:
-              # Disabling shallow clone is recommended for improving relevancy of reporting
-        fetch-depth: 0
-    - name: Setup sonarqube
-      uses: warchant/setup-sonar-scanner@v1
-    - name: Run sonarqube
-      run: sonar-scanner
-             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-             -Dsonar.organization=056174
-             -Dsonar.host.url=https://sonarqube.aa.com/
-             -Dsonar.projectKey=runway-auth-poc
-             -Dsonar.sources=.
-             -X
 
  #  - name: SonarCloud Scan
   #    uses: sonarsource/sonarcloud-github-action@master
